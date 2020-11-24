@@ -1,0 +1,314 @@
+\documentclass{article}
+\usepackage{graphicx, wrapfig, subcaption, setspace, booktabs,verbatim,hyperref, textcomp, siunitx}
+\usepackage{float}
+\newcommand{\WMOnum}{3901520} %% FILL WITH WMONUM
+\usepackage{epstopdf}
+\usepackage[margin=0.7in]{geometry}
+
+\begin{document}
+
+\title{Delayed Mode Quality Control of Argo float \WMOnum\hspace{0.5mm}}
+\author{Name Surname\\   %% Name of DMQC operator
+ORCID ID: 0000-0000-0000-0000\vspace{1cm}\\
+Name of Organisation\\
+Street name, Building number, City, Country} %% Name of Organisation and address
+
+\date{Day Month Year} %% Date of DMQC
+\maketitle
+
+\vspace{3cm}
+\begin{center}
+	\bf{DMQC summary}
+\end{center}
+
+\begin{flushleft}% text alignment to left
+In this section, write a brief description of all decisions made in DMQC analysis. You may include information about sea surface pressure corrections with applied QC flags and errors (if applicable), cell thermal mass corrections (if applicable), a decision made on salinity data including QC flags and corrections applied to salinity data (if needed).
+\vspace{0.5cm}
+
+For Example:
+"The sea surface pressure in Apex float was adjusted in d-mode. For cycles 1-155, the QC=1 and error 2.4 dbar was assigned to pressure data. Cell thermal mass correction was applied.
+For cycles 1-155, the salty offset was detected. Correction of -0.0125 offset was applied, QC=1, error=0.005."
+
+\newpage
+\tableofcontents
+
+\newpage
+\section{Introduction}
+ 
+Briefly write any necessary information about the float parameters, location, any steps performed before the DMQC analysis, version and type of the reference data, DMQC software and if there any CTD data from deployment was used as a reference data and any additional information about the deployment issues.	
+\vspace{0.5cm}
+
+For Example: 
+" This report includes the delayed mode analysis performed for float \hspace{0.5mm} \WMOnum. This float was deployed in the South Atlantic, in the southern part of the Brasil Basin, to the north from the Rio-Grande Rise.For more information about this float use, for instance, the following link:
+\href{url}{http://www.ifremer.fr/argoMonitoring/float/\WMOnum}".
+
+\medskip
+Before the analysis, real-time QC flags were visually inspected and modified if necessary. Then, the satellite altimeter comparison plot between the sea surface height and dynamic height anomaly, constructed for this float by Ifremer, was analysed. Another step was to generate the plots of temperature and salinity time series and plots of temperature, salinity and density plotted against the nearby historical CTD and Argo profiles. The additional plots supporting the DMQC analysis are included in the 
+
+\medskip
+Float \WMOnum\hspace{0.5mm} is the Apex float, where the pressure sensor is not auto-corrected to zero while at the sea surface, hence the pressure data in was corrected during processing in delayed mode. The procedures of correction sea surface pressure are described in Argo Quality Control Manual for CTD and Trajectory Data (Wong et al., 2020).
+
+\medskip
+The cell thermal mass corrections were applied. For SBE-41 CTDs the estimated alpha was 0.0267 and tau was 18.6 s, for the estimated alpha was 0.141 and tau was 6.68 s (Johnson et al., 2006).
+
+\medskip
+The DMQC analysis has been performed using the configuration and objective mapping parameters included in Section ~\ref{Configuration1} and ~\ref{Configuration2}. The Argo float data were compared to nearby CTD profiles as a reference database \texttt{CTD\_for\_DMQC\_2020 V01} and nearby Argo reference data \texttt{ARGO\_for\_DMQC\_2020 V01}, respectively. Both reference data are distributed by Ifremer. The OWC version 2.0 \href{url}{(https://github.com/ArgoDMQC/matlab\_owc)} was run to estimate a salinity offset and a salinity drift (Cabanes et al., 2016). 
+
+\begin{table}[!ht]%\footnotesize
+\caption{Technical information about float }
+\label{tab1}
+	\centering
+\begin{tabular}{|c|c|}
+	\hline
+	{Parameters} &  {\WMOnum} \\ \hline
+	{DAC} & { BODC} \\ \hline 
+	{Platform type} & {APEX} \\ \hline 
+	{Transmission system} & {ARGOS} \\ \hline 
+	{CTD Sensor type} & { SBE-41CP CTDs} \\ \hline 
+	{Other sensors} & { n/a} \\ \hline 
+	{Deployment} & { 22/10/2015} \\ \hline 
+	{Dep. Lat} & { -18.5465} \\ \hline 
+	{Dep. Lon} & { -25.0956} \\ \hline 
+	{Park Depth} & { 1000 m} \\ \hline 
+	{Profile depth} & { 2000 m} \\ \hline 
+	{Cycle time} & { 10 days} \\ \hline 
+	{Ship} & {RRS James Clark Ross} \\ \hline
+	{PI} & {Jon Turton} \\ \hline 
+	{Float Status} & { Active} \\ \hline 
+	{Age} & { 5.01 y} \\ \hline 
+	{Last Cycle} & { 155} \\ \hline 
+	{Grey list} & { PSAL} \\ \hline
+	
+\end{tabular}
+	\end{table}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\section{Quality Check of Argo Float Data}
+\subsection{Verification of Real-time mode QC flags}
+
+The list of flags applied to the float in real-time mode is as follows.
+\begin{table}[!ht]%\footnotesize
+\caption{Information on the Real-time QC}
+\label{tab1}
+	\centering
+\begin{tabular}{|c|c|c|c|}
+	\hline
+	{cycle numbers} &  {Previous Flags}& {New Flags}& {Comments} \\ \hline
+	{1-155}&  {1} &  {3} &  {Atlimetry QC applied, flagged PSAL,}\\ 
+	& & & {float added to greylist} \\ \hline
+\end{tabular}
+	\end{table}	
+
+%\newpage
+\subsection{Satellite Altimeter Report}
+\begin{figure}[H]
+    \centering    
+    \includegraphics[width=\textwidth]{Example_float/\WMOnum}
+    \caption{Float \WMOnum. The comparison between the sea surface height (SSH) from the satellite altimeter and dynamic height anomaly (DHA) extracted from the Argo float temperature and salinity. The figure is created by the CLS/Coriolis, distributed by Ifremer (ftp://ftp.ifremer.fr/ifremer/argo/etc/argo-ast9-item13-AltimeterComparison/figures/).}
+    \label{Altim}
+\end{figure}
+\subsection{Time Series of Argo Float Temperature and Salinity}
+%text
+\begin{figure}[H]
+    \centering    
+    \includegraphics[width=\textwidth]{Example_float/PTMP_raw\WMOnum}
+    \caption{Float \WMOnum. Time series of Argo float potential temperature (\textdegree C).}
+    \label{TempWaterflow}
+\end{figure}
+\begin{figure}[H]
+    \centering    
+    \includegraphics[width=\textwidth]{Example_float/SAL_raw\WMOnum}
+    \caption{Float \WMOnum. Time series of Argo float  salinity (PSS-78).}
+    \label{SALWaterflow}
+\end{figure}
+%\newpage
+\subsection{Comparison Between Argo Float and Climatology}
+%text
+\begin{figure}[H]
+    \centering    
+    \includegraphics[width=\textwidth]{Example_float/\WMOnum _check_ptheta}
+    \caption{Float \WMOnum. Potential temperature (\textdegree C) plotted with pressure (dbar) and data from WMO boxes of CTD reference data (CTD for DMQC 2019V01) +/- 10 \textdegree of latitude and longitude. The black and blue cycles indicate the first and the last Argo profile, respectively. Green symbols represent other Argo profiles from this float. The thin colors lines indicate the reference data.}
+    \label{TempPress}
+\end{figure}
+\begin{figure}[H]
+    \centering    
+    \includegraphics[width=\textwidth]{Example_float/\WMOnum _check_psal}
+    \caption{Float \WMOnum. Salinity (PSS-78) plotted with pressure (dbar) and data from WMO boxes of CTD reference data (CTD for DMQC 2019V01) +/- 10\textdegree of latitude and longitude. The black and blue cycles indicate the first and the last Argo profile, respectively. Green symbols represent other Argo profiles from this float. The thin colors lines indicate the reference data.}
+    \label{SALPress}
+\end{figure}
+\begin{figure}[H]
+    \centering    
+    \includegraphics[width=\textwidth]{Example_float/\WMOnum _check_thetasal}
+    \caption{Float \WMOnum. T/S diagram plotted with and data from WMO boxes of CTD reference data (CTD for DMQC 2019V01) +/- 10\textdegree of latitude and longitude. The black and blue cycles indicate the first and the last Argo profile, respectively. Green symbols represent other Argo profiles from this float.}
+    \label{ThetaS}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\subsection{Sea Surface Pressure Calibrations}
+
+\begin{figure}[H]
+\centering    
+    \includegraphics[width=\textwidth]{Example_float/surf_pres_\WMOnum}
+    \caption{Float \WMOnum. Sea surface pressure data. The red crosses indicate the raw pressure before float descent, recorded after sending data to GDAC. Blue circle indicate pressure value in the real-time. Green rotated cross shows the pressure correction applied from the previous float cycle. Top plot- data constrained between -2.4 and 2.4 dbar, middle plot- data constrained between -20 and +20 dbar, bottom plot- data with a max range of data.}
+    \label{surf_press}
+\end{figure}
+
+\newpage
+\section{Correction of Salinity Data}
+\subsection{Comparison between Argo Float and CTD Climatlogy}
+\subsubsection{Configuration}
+\label{Configuration1}
+\verbatiminput{Example_float/ow_config_sa_ctdv2.txt} 
+\subsubsection{Results} \label{results_CTD}
+\begin{figure}[H]
+    \centering    
+    \includegraphics[width=\textwidth]{Example_float/data/float_plots/ctd/\WMOnum_1}
+    \caption{Float \WMOnum. Location of the float profiles (red line with coloured numbers) and the CTD reference data selected for mapping (blue dots). The black contours indicate the bathymetry at 0, 200, 1000 and 2000 m.}
+    \label{trajectoryCTD}
+\end{figure}
+
+\newpage
+%CTD comparison
+\begin{figure}[H]
+    \centering    
+    \includegraphics[width=\textwidth]{Example_float/data/float_plots/ctd/\WMOnum_2}
+    \caption{Float \WMOnum. The Plot the original float salinity and the objectively estimated reference salinity at the 10 float theta levels that are used in calibration.}
+    \label{uncalibVsSalinity}
+\end{figure}
+
+\begin{figure}[H]
+    \centering    
+    \includegraphics[width=\textwidth]{Example_float/data/float_plots/ctd/\WMOnum_3}
+    \caption{Float \WMOnum. Evolution of the suggested adjustment with time. The top panel plots the potential conductivity multiplicative adjustment. The bottom panel plots the equivalent salinity additive adjustment. The red line denotes one-to-one profile fit that uses the vertically weighted mean of each profile. The red line can be used to check for anomalous profiles relative to the optimal fit.}
+    \label{SalWithErrors}
+\end{figure}
+
+%\newpage
+\begin{figure}[H]
+    \centering    
+    \includegraphics[width=\textwidth]{Example_float/data/float_plots/ctd/\WMOnum_4}
+    \caption{Float \WMOnum. Plots of calibrated float salinity and the objectively estimated reference salinity at the 10 float theta levels that are used in calibration.}
+    \label{CalibVsSalinity}
+\end{figure}
+
+\begin{figure}[H]
+    \centering    
+    \includegraphics[width=\textwidth]{Example_float/data/float_plots/ctd/\WMOnum_5}
+    \caption{Float \WMOnum. Salinity anomaly on theta levels.}
+    \label{SalAnomOnTheta}
+\end{figure}
+
+\newpage
+\begin{figure}[H]
+    \centering    
+    \includegraphics[width=\textwidth]{Example_float/data/float_plots/ctd/\WMOnum_6}
+    \caption{Float \WMOnum. Plots of the evolution of salinity with time along with selected theta levels with minimum salinity variance.}
+    \label{SalErrOnTheta}
+\end{figure}
+
+\begin{figure}[H]
+    \centering    
+    \includegraphics[width=\textwidth]{Example_float/data/float_plots/ctd/\WMOnum_7}
+    \caption{Float \WMOnum.  Calibrated salinity anomaly on theta levels.}
+    \label{CalibSalAnomOnTheta}
+\end{figure}
+
+%\newpage
+\begin{figure}[H]
+    \centering    
+    \includegraphics[width=\textwidth]{Example_float/data/float_plots/ctd/\WMOnum_8}
+    \caption{Float \WMOnum. Plots include the theta levels chosen for calibration: Top left: Salinity variance at theta levels. Top right: T/S diagram of all profiles of Argo float. Bottom left: potential temperature plotted against pressure. Bottom right: salinity plotted against pressure.}
+    \label{Salinity_OWlevels}
+\end{figure}
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Argo
+\subsection{Comparison between Argo Float and Argo Climatlogy}
+\subsubsection{Configuration}
+\label{Configuration2}
+\verbatiminput{Example_float/ow_config_sa_argov2.txt}
+
+\subsubsection{Results}\label{results_ARGO}
+%\subsection{Trajectory}
+\begin{figure}[H]
+    \centering    
+    \includegraphics[width=\textwidth]{Example_float/data/float_plots/argo/\WMOnum_1}
+    \caption{Float \WMOnum. Location of the float profiles (red line with coloured numbers) and the CTD reference data selected for mapping (blue dots). The black contours indicate the bathymetry at 0, 200, 1000 and 2000 m.}
+    \label{trajectoryCTD_Argo}
+\end{figure}
+%\newpage
+\begin{figure}[H]
+    \centering    
+    \includegraphics[width=\textwidth]{Example_float/data/float_plots/argo/\WMOnum_2}
+    \caption{Float \WMOnum. Plot the original float salinity and the objectively estimated reference salinity at the 10 float theta levels that are used in calibration.}
+    \label{uncalibVsSalinity_Argo}
+\end{figure}
+\begin{figure}[H]
+    \centering    
+    \includegraphics[width=\textwidth]{Example_float/data/float_plots/argo/\WMOnum_3}
+    \caption{Float \WMOnum. Evolution of the suggested adjustment with time. The top panel plots the potential conductivity multiplicative adjustment. The bottom panel plots the equivalent salinity additive adjustment. The red line denotes one-to-one profile fit that uses the vertically weighted mean of each profile. The red line can be used to check for anomalous profiles relative to the optimal fit.}
+    \label{SalWithErrors_Argo}
+\end{figure}
+%\newpage
+\begin{figure}[H]
+    \centering    
+    \includegraphics[width=\textwidth]{Example_float/data/float_plots/argo/\WMOnum_4}
+    \caption{Float \WMOnum. The plot of calibrated float salinity and the objectively estimated reference salinity at the 10 float theta levels that are used in calibration.}
+    \label{CalibVsSalinity_Argo}
+\end{figure}
+\begin{figure}[H]
+    \centering    
+    \includegraphics[width=\textwidth]{Example_float/data/float_plots/argo/\WMOnum_5}
+    \caption{Float \WMOnum. Salinity anomaly on theta levels.}
+    \label{SalAnomOnTheta_Argo}
+\end{figure}
+\newpage
+\begin{figure}[H]
+    \centering    
+    \includegraphics[width=\textwidth]{Example_float/data/float_plots/argo/\WMOnum_6}
+    \caption{Float \WMOnum. Plots of the evolution of salinity with time along with selected theta levels with minimum salinity variance.}
+    \label{SalErrOnTheta_Argo}
+\end{figure}
+\begin{figure}[H]
+    \centering    
+    \includegraphics[width=\textwidth]{Example_float/data/float_plots/argo/\WMOnum_7}
+    \caption{Float \WMOnum. Calibrated salinity anomaly on theta levels.}
+    \label{CalibSalAnomOnTheta_Argo}
+\end{figure}
+%\newpage
+\begin{figure}[H]
+    \centering    
+    \includegraphics[width=\textwidth]{Example_float/data/float_plots/argo/\WMOnum_8}
+    \caption{Float \WMOnum. Plots include the theta levels chosen for calibration: Top left: Salinity variance at theta levels. Top right: T/S diagram of all profiles of Argo float. Bottom left: potential temperature plotted against pressure. Bottom right: salinity plotted against pressure.}
+    \label{Salinity_OWlevels_Argo}
+\end{figure}
+
+\newpage
+\section{Summary}
+Write the summary of any problems with float and decision made on this float including e.g. Is the float still active? Where is float located and what is the trajectory over its lifetime? Has it crossed through different water masses, changed latitude, etc? Is the float on the grey list? If DMQC has been done on some profiles before what decisions have been made and if anything has changed? What was the setup used in set\_calseries.m? Did you run any more code iterations with different configurations? If yes how it helped you to make a final decision? 
+\vspace{0.5cm}
+
+For example: "Float was deployed in the Brazil Basin. For most of life, this float stayed in the system of local eddies. The most favourable water masses, which are useful for comparison with climatology is relatively stable intermediate waters from around 400-900 m. The initial comparison between Argo float data reference data from CTD data shows that salinity data are within its variability, however, slightly shifted toward saltier values of CTD data. The sea surface pressure data are not displaying values below 0 dbar, however, there are no indications of negative pressure drift.
+ 
+\medskip
+The comparison with satellite altimeter data suggested some potential offset between the sea surface height and dynamic height anomaly, which were further verified by comparing Argo data with Argo reference data using the OWC method. This float was not DMQC-ed before. In set\_calseries.m we set the maximum of barks to -1 to show evidence of suspected offset. The CTD referenced data were too limited and too variable to detect any offset. Much clearer result was obtained by comparing Argo float data to Argo reference data. The OWC analysis showed indications of salty offset. Argo data from this float are of around 0.0125 saltier that reference data. The offset of -0.0125 was  applied to salinity data and submitted to GDAC. This float is still active and further monitoring is still required."
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newpage
+\section{References}
+
+Cabanes, C., Thierry, V., \& Lagadec, C. (2016). Improvement of bias detection in Argo float conductivity sensors and its application in the North Atlantic. Deep-Sea Research Part I: Oceanographic Research Papers, 114, 128–136. \href{url}{https://doi.org/10.1016/j.dsr.2016.05.007}
+
+\bigskip
+Johnson, G. C., Toole, J. M., \& Larson, N. G. (2007). Sensor corrections for Sea-Bird SBE-41CP and SBE-41 CTDs. Journal of Atmospheric and Oceanic Technology, 24(6), 1117–1130. \href{url}{https://doi.org/10.1175/JTECH2016.1}
+
+\bigskip
+Wong, A., Keeley, R., Carval, T., and the Argo Data Management Team (2020).
+Argo Quality Control Manual for CTD and Trajectory Data.
+ \href{url}{http://dx.doi.org/10.13155/33951}
+
+\end{flushleft}
+
+\end{document}
