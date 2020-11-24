@@ -1,0 +1,83 @@
+
+% Code that combining pre-check plots for temp, ptemp, salinity from
+% climatology and Argo data
+
+% Kamila Walicka 12/03/2019
+
+%% Imputs
+
+%WMO number
+float_names=3901520
+
+addpath ('M:\BODC_DOC\Data_Projects\Argo\BODC_docs\delayed_mode\DMQC_report_template\GitHubcodes\Matlab_codes_plots\additional_codes') 
+
+load(['M:\BODC_DOC\Data_Projects\Argo\BODC_docs\delayed_mode\DMQC_report_template\GitHubcodes\Matlab_codes_plots\data\float_source\',num2str(float_names),'.mat'])
+
+check_thetasal(num2str(float_names),LAT,LONG,PRES,PTMP,SAL)
+check_psal(num2str(float_names),LAT,LONG,PRES,SAL)
+check_ptheta(num2str(float_names),LAT,LONG,PRES,PTMP)
+ 
+%% Set directory to the source data 
+load(['M:\BODC_DOC\Data_Projects\Argo\BODC_docs\delayed_mode\DMQC_report_template\GitHubcodes\Matlab_codes_plots\data\float_source\',num2str(float_names),'.mat'])
+%
+DATES_vec=(repmat(PROFILE_NO,size(PRES,1),1));
+sz=100;
+
+% Figure 1 Potential temperature
+figure;
+subplot(2,1,1);
+scatter(DATES_vec(:),PRES(:),sz,PTMP(:),'s','filled') ;
+hold on
+colormap(jet(15));%colormap(jet(30))
+cm=colorbar;
+
+[C,h]=contour(DATES_vec,PRES,PTMP,'color','k','LineWidth',1);
+clabel(C,h,'fontsize',8);
+set(gca,'YDir','reverse') ;
+ylabel(cm,{'Potential Temperature (degC)'}) ;
+box on
+ylim([-50,(max(max(PRES))+100)]) 
+%xlim([DATES(1)-0.018,DATES(end)+0.018]);
+xlabel('Profile Number');
+ylabel({'Pressure (dbar)'});
+title(['Float ',num2str(float_names),' Potential Temperature'])
+set(gca,'Fontsize',10)
+set(gcf,'Units','centimeters','PaperPosition',[0 0 18 20])                       
+print(['PTMP_raw',num2str(float_names)],'-depsc')
+
+% Figure 2 practical Salinity
+figure;
+subplot(2,1,1);
+scatter(DATES_vec(:),PRES(:),sz,SAL(:),'s','filled') ;
+hold on
+colormap(jet(15));%colormap(jet(30))
+c=colorbar;
+
+[A,b]=contour(DATES_vec,PRES,SAL,'color','k','LineWidth',1);
+clabel(A,b,'Fontsize',8);
+set(gca,'YDir','reverse') ;
+box on
+
+ylabel(c,'Salinity (PSS-78)');
+xlabel('Profile Number')
+ylabel('Pressure (dbar)')
+ylim([-50,(max(max(PRES))+100)]) ;
+%xlim([DATES(1)-0.018,DATES(end)+0.018]);
+title(['Float ',num2str(float_names),' Salinity (PSS-78)'])
+set(gca,'Fontsize',10)
+set(gcf,'Units','centimeters','PaperPosition',[0 0 18 20])    
+
+print(['M:\BODC_DOC\Data_Projects\Argo\BODC_docs\delayed_mode\DMQC_report_template\GitHubcodes\Matlab_codes_plots\SAL_raw',num2str(float_names)],'-depsc');
+
+clear all;close all
+%% Codes that are ploting Argo data and historical data in the same plot
+
+
+
+
+ 
+% close all ;
+
+
+
+
