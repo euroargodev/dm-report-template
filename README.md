@@ -17,6 +17,7 @@
  ### check_raw_data.m
  This code is generating: 
  * Argo float data plotted against the CTD referenced data
+ * Trajectory plot of Argo float
  * time series of potential temperature and salinity data of Argo float
  
  #### How to use?
