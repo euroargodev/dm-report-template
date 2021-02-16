@@ -6,10 +6,8 @@ function check_raw_data(float_name)
 %Input:
 %     float_name   WMO number of float e.g. 3901520
 
-
-
-% Kamila Walicka, BODC, 24/11/2020
-
+% Kamila Walicka, BODC, 24/11/2020- the first release of code
+% Kamila Walicka, BODC, 16/02/2021- including trajectory map
 %% 
 
 addpath('.\additional_codes') 
@@ -23,6 +21,51 @@ check_thetasal(num2str(float_name),LAT,LONG,PRES,PTMP,SAL)
 check_psal(num2str(float_name),LAT,LONG,PRES,SAL)
 check_ptheta(num2str(float_name),LAT,LONG,PRES,PTMP)
 
+%% Plots of Argo trajectory map
+bath=[-6000,-5000, -4000,-3000, -2000,-1000,-200];
+% marker size
+mksz='10';
+
+LONG=wrapTo180(LONG);
+minlon=min(LONG)-20; maxlon=max(LONG)+20; minlat=min(LAT)-20; maxlat=max(LAT)+20;
+
+figure
+m_proj('mercator','long',[minlon maxlon],'lat',[minlat maxlat]);
+[C1,H1]=m_etopo2('contourf', bath,'color','k');
+clabel(C1,H1,[-6000 -5000 -4000 -3000 -2000 -1000 -200],'color','k','Fontsize',10)
+
+map=[0.65 0.65 0.65;
+    0.70 0.70 0.70;
+    0.74 0.74 0.74;
+    0.77 0.77 0.77;
+    0.80 0.80 0.80;
+    0.83 0.83 0.83;
+    0.87 0.87 0.87;
+    0.9 0.9 0.9;
+    0.93 0.93 0.93;
+    0.97 0.97 0.97;
+     1 1 1];
+colormap(map);
+%colorbar
+m_coast('patch',[0 .5 0],'edgecolor','k');
+hold on
+m_plot(LONG,LAT,'r', 'linewidth',2);
+m_plot(LONG,LAT,'ok','markersize',2.5)
+m_plot(LONG,LAT,'or','markersize',2)
+
+m_plot(LONG(1),LAT(1),'p','color','b','markersize',3);
+m_plot(LONG(end),LAT(end),'d','color','k','markersize',3);
+
+
+m_text(LONG(1),LAT(1),num2str(PROFILE_NO(1)),'fontsize',7,'color','k')
+m_text(LONG(end),LAT(end),num2str(PROFILE_NO(end)),'fontsize',7,'color','k')
+
+title(['Float ',num2str(float_name)])
+m_grid('box','fancy','tickdir','out');
+set(gca,'Fontsize',10)
+set(gcf,'Units','centimeters','PaperPosition',[0 0 16 18])    
+
+print(['..\Example_float\Traj_plot',num2str(float_name)],'-depsc');
 %% Plots of Argo reference data time series
 %
 DATES_vec=(repmat(PROFILE_NO,size(PRES,1),1));
