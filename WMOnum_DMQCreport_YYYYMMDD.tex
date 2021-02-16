@@ -16,7 +16,13 @@ Street name, Building number, City, Country} %% Name of Organisation and address
 \date{Day Month Year} %% Date of DMQC
 \maketitle
 
-\vspace{3cm}
+\begin{figure}[H]
+    \centering    
+    \includegraphics[width=100mm]{Example_float/Traj_plot\WMOnum}
+    \caption{Float \WMOnum. Trajectory map of \WMOnum float.}
+    \label{Traj_plot}
+\end{figure}
+
 \begin{center}
 	\bf{DMQC summary}
 \end{center}
@@ -295,6 +301,9 @@ For example: "Float was deployed in the Brazil Basin. For most of life, this flo
 The comparison with satellite altimeter data suggested some potential offset between the sea surface height and dynamic height anomaly, which were further verified by comparing Argo data with Argo reference data using the OWC method. This float was not DMQC-ed before. In set\_calseries.m we set the maximum of barks to -1 to show evidence of suspected offset. The CTD referenced data were too limited and too variable to detect any offset. Much clearer result was obtained by comparing Argo float data to Argo reference data. The OWC analysis showed indications of salty offset. Argo data from this float are of around 0.0125 saltier that reference data. The offset of -0.0125 was  applied to salinity data and submitted to GDAC. This float is still active and further monitoring is still required."
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\newpage
+\section{Appendix}
+In this section you can add any additional supporting graphs
 
 %\newpage
 \section{References}
