@@ -5,7 +5,7 @@
  The report template has been created based on the LaTeX software. This template is **WMOnum_DMQCreport_YYYYMMDD.tex**. 
  The gudelines how to install and use the LaTex software can be found in **LaTeX_DMQC_report_template_guidelines.pdf**.
  
- There is also available an online version of this template, using the online Overleaf LaTeX editor, which can be found here  https://www.overleaf.com/project/5f92ebe45b388e00015257c8
+ There is also available an online version of this template, using the online Overleaf LaTeX editor, which can be found here https://www.overleaf.com/read/xhnxyjcfmkmc
  
  ## .pdf version of template
  The .pdf version of DMQC report template can be found in **WMOnum_DMQCreport_YYYYMMDD.pdf**.
