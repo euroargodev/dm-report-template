@@ -1,12 +1,12 @@
 \documentclass{article}
-\usepackage{graphicx, wrapfig, subcaption, setspace, booktabs,verbatim,hyperref, textcomp, siunitx}
+%\usepackage{graphicx, wrapfig, subcaption, setspace, booktabs,verbatim,hyperref, textcomp, siunitx}
+\usepackage{graphicx, subcaption, setspace, booktabs,verbatim,hyperref, textcomp}
 \usepackage{float}
 \newcommand{\WMOnum}{3901520} %% FILL WITH WMONUM
 \usepackage{epstopdf}
 \usepackage[margin=0.7in]{geometry}
 
 \begin{document}
-
 \title{Delayed Mode Quality Control of Argo float \WMOnum\hspace{0.5mm}}
 \author{Name Surname\\   %% Name of DMQC operator
 ORCID ID: 0000-0000-0000-0000\vspace{1cm}\\
@@ -162,10 +162,16 @@ The list of flags applied to the float in real-time mode is as follows.
 
 \newpage
 \section{Correction of Salinity Data}
-\subsection{Comparison between Argo Float and CTD Climatlogy}
+\
+subsection{Comparison between Argo Float and CTD Climatlogy}
 \subsubsection{Configuration}
 \label{Configuration1}
-\verbatiminput{Example_float/ow_config_sa_ctdv2.txt} 
+
+%\verbatiminput{Example_float/ow_config_sa_ctdv2_table.txt} 
+% cc use of \input command to create table
+\input{Example_float/ow_config_sa_ctdv2_table.tex}
+
+
 \subsubsection{Results} \label{results_CTD}
 \begin{figure}[H]
     \centering    
@@ -233,7 +239,9 @@ The list of flags applied to the float in real-time mode is as follows.
 \subsection{Comparison between Argo Float and Argo Climatlogy}
 \subsubsection{Configuration}
 \label{Configuration2}
-\verbatiminput{Example_float/ow_config_sa_argov2.txt}
+%\verbatiminput{Example_float/ow_config_sa_argov2.txt}
+% cc use of \input command to create table
+\input{Example_float/ow_config_sa_argov2_table.tex}
 
 \subsubsection{Results}\label{results_ARGO}
 %\subsection{Trajectory}
